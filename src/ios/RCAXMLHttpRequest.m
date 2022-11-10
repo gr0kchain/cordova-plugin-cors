@@ -31,7 +31,7 @@
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:path]];
     [request setHTTPMethod:method];
-    if (![data isEqual:[NSNull null]]) {
+    if (![method isEqualToString:@"GET"] && ![data isEqual:[NSNull null]]) {
         if ([data isKindOfClass:NSString.class]) {
             [request setHTTPBody:[(NSString *)data dataUsingEncoding:NSUTF8StringEncoding]];
         } else if ([data isKindOfClass:NSArray.class] && [@"multipart/form-data" isEqualToString:[headers objectForKey:@"Content-Type"]]) {
